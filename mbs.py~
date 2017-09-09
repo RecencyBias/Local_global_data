@@ -1,0 +1,45 @@
+import csv
+import re
+dates = []
+scores = []
+ 
+with open('malaybhatta_tweets.csv') as csvDataFile:
+    csvReader = csv.reader(csvDataFile)
+    for row in csvReader:
+        dates.append(row[1])
+        scores.append(row[3])
+dates = dates[0:100]
+str2 = ''.join(dates)
+sepdays = re.findall(r'2017-09-\d{1,2}',str2)
+augdays = re.findall(r'2017-08-\d{1,2}',str2)
+juldays = re.findall(r'2017-07-\d{1,2}',str2)
+jundays = re.findall(r'2017-06-\d{1,2}',str2)
+maydays = re.findall(r'2017-05-\d{1,2}',str2)
+aprdays = re.findall(r'2017-04-\d{1,2}',str2)
+mardays = re.findall(r'2017-03-\d{1,2}',str2)
+febdays = re.findall(r'2017-02-\d{1,2}',str2)
+jandays = re.findall(r'2017-01-\d{1,2}',str2)
+a = []
+a.extend([len(jandays),len(febdays),len(mardays),len(aprdays),len(maydays),len(jundays),len(juldays),len(augdays),len(sepdays)])
+print a
+num = [1,2,3,4,5,6,7,8,9]
+cumulative = []
+i=0
+j=0
+x=0
+while i<9:
+	j=0
+	x=0
+	while j<=i:
+		x=x+a[j]
+		j+=1
+	cumulative.append(x)
+	i+=1
+print cumulative
+import matplotlib.pyplot as plt
+plt.bar(num,a,align = 'center',color = 'red')
+plt.show()
+plt.bar(num,cumulative,align = 'center',color = 'magenta')
+plt.show()
+#print(dates)
+#print(scores)

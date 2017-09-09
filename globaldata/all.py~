@@ -1,0 +1,43 @@
+import csv
+import re
+one = []
+two = []
+three=[]
+four = []
+five = []
+
+with open('abdtweetsmonthwise.csv') as csvDataFile:
+    csvReader = csv.reader(csvDataFile)
+    for row in csvReader:
+        one.append(row[0])
+with open('DaleSteyntweetsmonthwise.csv') as csvDataFile:
+    csvReader = csv.reader(csvDataFile)
+    for row in csvReader:
+        two.append(row[0])
+with open('javedtweetsmonthwise.csv') as csvDataFile:
+    csvReader = csv.reader(csvDataFile)
+    for row in csvReader:
+        three.append(row[0])
+with open('ranveertweetsmonthwise.csv') as csvDataFile:
+    csvReader = csv.reader(csvDataFile)
+    for row in csvReader:
+        four.append(row[0])
+with open('SushmaSwarajtweetsmonthwise.csv') as csvDataFile:
+    csvReader = csv.reader(csvDataFile)
+    for row in csvReader:
+        five.append(row[0])
+
+i=0
+sums = []
+ranks=[]
+for i in range(0,len(one)):
+	sums.append(one[i]+two[i]+three[i]+four[i]+five[i])
+for i in range(0,len(one)):
+	ranks.append(i+1)
+
+import matplotlib.pyplot as plt
+plt.bar(ranks,sums,align = 'center',color = 'green')
+plt.xlabel("Months")
+plt.ylabel("Global no of tweets")
+plt.show()
+                    
